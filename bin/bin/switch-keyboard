@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+# Define keyboard layouts to switch between
+LOCALES=us,no,se
+
+setxkbmap $LOCALES -option 'grp:alt_shift_toggle'
