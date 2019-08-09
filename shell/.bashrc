@@ -2,7 +2,7 @@
 [[ $- != *i* ]] && return
 
 # Source the bash configuration files (order matters)
-for PROFILE in ./.bash.d/{env,xdg-env,options,aliases,functions,completion}.sh; do
+for PROFILE in $HOME/.bash.d/{env,xdg-env,options,aliases,functions,completion}.sh; do
  source $PROFILE;
 done
 

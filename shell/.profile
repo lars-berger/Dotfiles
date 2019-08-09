@@ -1,1 +1,1 @@
-~/.bash.d/env.sh
+source $HOME/.bash.d/env.sh
