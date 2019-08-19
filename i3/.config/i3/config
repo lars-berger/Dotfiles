@@ -57,9 +57,9 @@ bindsym $mod+Ctrl+m exec pavucontrol
 # Start Applications
 bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
 bindsym $mod+F2 exec firefox
-bindsym $mod+F3 exec i3-sensible-terminal -e ranger
-bindsym $mod+Shift+F3 exec thunar
+bindsym $mod+F3 exec thunar
 bindsym $mod+F5 exec terminal -e 'mocp'
+bindsym $mod+Shift+Return exec i3-sensible-terminal -e ranger
 bindsym $mod+t exec --no-startup-id pkill compton
 bindsym $mod+Ctrl+t exec --no-startup-id compton -b
 bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
@@ -270,7 +270,7 @@ exec --no-startup-id clipit
 # exec_always --no-startup-id sbxkb
 exec --no-startup-id xautolock -time 10 -locker blurlock
 exec_always --no-startup-id ff-theme-util
-exec_always --no-startup-id fix_xcursor
+# exec_always --no-startup-id fix_xcursor
 
 # Set variables from Xresources database ( ~/.Xresources file )
 set_from_resource $bg   color2
