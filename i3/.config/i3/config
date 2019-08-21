@@ -343,6 +343,6 @@ mode "$mode_gaps_outer" {
         bindsym Escape mode "default"
 }
 
-exec_always xrandr --output eDP1 --mode 2560x1440 --pos 2560x0 --rotate normal --output DP1 --off --output DP2 --off --output HDMI1 --off --output HDMI2 --primary --mode 2560x1440 --pos 0x0 --rotate normal --output VIRTUAL1 --off
+exec_always $HOME/.screenlayout/default.sh
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
