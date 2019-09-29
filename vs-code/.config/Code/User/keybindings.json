@@ -1,8 +1,29 @@
-// Place your key bindings in this file to override the defaults
 [
+    // Allow capslock to behave like <esc>
     {
         "key": "capslock",
         "command": "extension.vim_escape",
         "when": "editorTextFocus && vim.active && !inDebugRepl"
-    }
+    },
+    
+    // Remap <ctrl+n> to create a new file within current directory
+    {
+        "key": "ctrl+n",
+        "command": "explorer.newFile",
+    },
+    {
+        "key": "ctrl+n",
+        "command": "-extension.vim_ctrl+n",
+        "when": "editorTextFocus && vim.active && vim.use<C-n> && !inDebugRepl"
+    },
+
+    // Remap <ctrl+shift+n> to create a new folder within current directory
+    {
+        "key": "ctrl+shift+n",
+        "command": "explorer.newFolder",
+    },
+    {
+        "key": "ctrl+shift+n",
+        "command": "-workbench.action.newWindow"
+    },
 ]
