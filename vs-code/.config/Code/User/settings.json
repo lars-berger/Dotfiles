@@ -33,6 +33,12 @@
   // Vim extension settings
   "vim.useSystemClipboard": true,
 
+  // Gitlens extension settings
+  "gitlens.currentLine.enabled": false,
+  "gitlens.hovers.currentLine.over": "line",
+  "gitlens.codeLens.enabled": false,
+  "gitlens.hovers.enabled": false,
+
   // Windows-specific settings
   "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
   "git.path": "C:\\Program Files\\Git\\bin\\git.exe",
