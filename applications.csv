@@ -1,0 +1,8 @@
+xorg-xfd (pacman),
+siji-git (yay),
+typescript (npm),
+webpack (npm),
+dotnet-sdk-bin (yay),
+msbuild-16-bin (yay - needed temporarily until Mono updates),
+postman-bin (yay),
+insomnia (yay)
