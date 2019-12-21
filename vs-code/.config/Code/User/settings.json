@@ -36,6 +36,9 @@
   "gitlens.codeLens.enabled": false,
   "gitlens.hovers.enabled": false,
 
+  // Linux-specific settings 
+  "terminal.integrated.shellArgs.linux": ["-l"],
+
   // Windows-specific settings
   "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
   "git.path": "C:\\Program Files\\Git\\bin\\git.exe",
