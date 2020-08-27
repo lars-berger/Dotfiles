@@ -42,5 +42,6 @@
   // Windows-specific settings
   "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
   "git.path": "C:\\Program Files\\Git\\bin\\git.exe",
+  "terminal.integrated.shellArgs.windows": ["-ExecutionPolicy", "Bypass"],
   "editor.renderControlCharacters": false,
 }
