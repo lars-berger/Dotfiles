@@ -32,6 +32,8 @@ function Install-Packages {
     'firefox /l:en-US',
     'git /NoGuiHereIntegration',
     'googlechrome',
+    # neovim --pre should probably be used instead until 0.5 goes out of beta.
+    'neovim',
     'nodejs-lts',
     'pgadmin4',
     'spotify',
@@ -76,6 +78,9 @@ function Install-Wsl-Ubuntu-Packages {
 
   wsl sudo npm install -g tree-sitter-cli --unsafe-perm=true --allow-root
   wsl sudo npm i -g neovim
+
+  # Symlink win32yank so that it can be found by Neovim on WSL.
+  wsl sudo ln -s "/mnt/c/tools/neovim/Neovim/win32yank.exe" "/usr/local/bin/win32yank.exe"
 }
 
 function Add-Wsl-Configs {
