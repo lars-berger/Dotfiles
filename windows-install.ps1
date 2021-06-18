@@ -9,7 +9,11 @@ function Show-Help {
 }
 
 function Install-Wsl {
-  wsl --install
+  $IsWslInstalled = wsl -l -v
+
+  if (-not($IsWslInstalled)) {
+    wsl --install
+  }
 }
 
 function Install-Packages {
@@ -21,6 +25,7 @@ function Install-Packages {
   }
 
   $ProgramsToInstall = @(
+    'autohotkey',
     'discord',
     'docker-desktop',
     'dropbox',
@@ -49,6 +54,46 @@ function Add-Vscode-Config {
   Copy-Item -Path "${PSScriptRoot}\vs-code\.config\Code\User\settings.json" -Destination "${DestinationDir}\settings.json"
 }
 
+function Install-Wsl-Ubuntu-Packages {
+  wsl sudo apt -y update
+
+  # Add repository so that NeoVim 0.5 can be installed.
+  wsl sudo add-apt-repository -y ppa:neovim-ppa/unstable
+
+  # Install languages, runtimes, etc.
+  wsl sudo apt -y install nodejs npm python3-pip
+
+  # Install some programs that are nice to have.
+  wsl sudo apt -y install ripgrep fzf ranger neovim
+
+  # Install misc dependencies.
+  wsl sudo apt -y install libjpeg8-dev zlib1g-dev python-dev python3-dev libxtst-dev dos2unix
+
+  wsl pip3 install pynvim --user
+  wsl pip3 install ueberzug neovim-remote
+
+  wsl git clone https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+
+  wsl sudo npm install -g tree-sitter-cli --unsafe-perm=true --allow-root
+  wsl sudo npm i -g neovim
+}
+
+function Add-Wsl-Configs {
+  Write-Output "Adding config files to WSL."
+
+  $DestinationDir = "${PSScriptRoot}\nvim\.config\nvim".Replace("\", "/")
+  $FormattedDir = wsl wslpath -u $DestinationDir
+  Write-Output "Copying nvim config from ${FormattedDir}."
+
+  wsl rm -rf ~/.config/nvim
+  wsl cp -r $FormattedDir ~/.config/nvim
+
+  # Convert line endings to LF.
+  wsl cd ~/.config/nvim; find -type f -print0 | xargs -0 dos2unix
+
+  wsl nvim -u ~/.config/nvim/init.lua +PackerInstall
+}
+
 # Get the flag passed in to the script.
 $Flag = $args[0]
 
@@ -57,10 +102,13 @@ switch ($Flag) {
     Install-Wsl
     Install-Packages
     Add-Vscode-Config
+    Add-Wsl-Configs
     Break
   }
   "--wsl" {
-    Install-Wsl
+    # Install-Wsl
+    # Install-Wsl-Ubuntu-Packages
+    Add-Wsl-Configs
     Break
   }
   "--packages" {
