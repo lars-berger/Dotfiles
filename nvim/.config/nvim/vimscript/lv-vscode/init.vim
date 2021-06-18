@@ -10,6 +10,23 @@ function! s:manageEditorSize(...)
     endfor
 endfunction
 
+if has('clipboard') || exists('g:vscode')
+    if has('nvim') && exists('$WSLENV')
+        let g:clipboard = {
+            \ 'name': 'win32yank-wsl',
+            \ 'copy': {
+            \    '+': 'win32yank.exe -i --crlf',
+            \    '*': 'win32yank.exe -i --crlf',
+            \  },
+            \ 'paste': {
+            \    '+': 'win32yank.exe -o --lf',
+            \    '*': 'win32yank.exe -o --lf',
+            \ },
+            \ 'cache_enabled': 0,
+        \ }
+    endif
+endif
+
 function! s:vscodeCommentary(...) abort
     if !a:0
         let &operatorfunc = matchstr(expand('<sfile>'), '[^. ]*$')
