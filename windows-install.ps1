@@ -55,10 +55,10 @@ function Add-Vscode-Config {
 }
 
 function Install-Wsl-Ubuntu-Packages {
-  wsl sudo apt -y update
-
   # Add repository so that NeoVim 0.5 can be installed.
   wsl sudo add-apt-repository -y ppa:neovim-ppa/unstable
+
+  wsl sudo apt -y update
 
   # Install languages, runtimes, etc.
   wsl sudo apt -y install nodejs npm python3-pip
@@ -67,7 +67,7 @@ function Install-Wsl-Ubuntu-Packages {
   wsl sudo apt -y install ripgrep fzf ranger neovim
 
   # Install misc dependencies.
-  wsl sudo apt -y install libjpeg8-dev zlib1g-dev python-dev python3-dev libxtst-dev dos2unix
+  wsl sudo apt -y install libjpeg8-dev zlib1g-dev python-dev python3-dev libxtst-dev
 
   wsl pip3 install pynvim --user
   wsl pip3 install ueberzug neovim-remote
@@ -85,11 +85,9 @@ function Add-Wsl-Configs {
   $FormattedDir = wsl wslpath -u $DestinationDir
   Write-Output "Copying nvim config from ${FormattedDir}."
 
+  # Copy nvim config to appropriate directory in WSL.
   wsl rm -rf ~/.config/nvim
   wsl cp -r $FormattedDir ~/.config/nvim
-
-  # Convert line endings to LF.
-  wsl cd ~/.config/nvim; find -type f -print0 | xargs -0 dos2unix
 
   wsl nvim -u ~/.config/nvim/init.lua +PackerInstall
 }
@@ -106,8 +104,8 @@ switch ($Flag) {
     Break
   }
   "--wsl" {
-    # Install-Wsl
-    # Install-Wsl-Ubuntu-Packages
+    Install-Wsl
+    Install-Wsl-Ubuntu-Packages
     Add-Wsl-Configs
     Break
   }
