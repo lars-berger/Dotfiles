@@ -2,9 +2,9 @@
 
 function Show-Help {
   Write-Output 'Possible flags:'
-  Write-Output '--all (installs all programs and configs)'
+  Write-Output '--all (installs all packages and configs)'
   Write-Output '--wsl (installs WSL)'
-  Write-Output '--programs (installs all programs)'
+  Write-Output '--packages (installs all packages)'
   Write-Output '--vs-code (installs vs-code related configs)'
 }
 
@@ -12,7 +12,7 @@ function Install-Wsl {
   wsl --install
 }
 
-function Install-Windows-Packages {
+function Install-Packages {
   $IsChocoInstalled = powershell choco -v
 
   if (-not($IsChocoInstalled)) {
@@ -32,7 +32,40 @@ function Install-Windows-Packages {
   )
 
   foreach ($Program in $ProgramsToInstall) {
-    Write-Output "Installing ${program}"
-    choco install $Program
+    $ProgramName = $Program.split()[0]
+    $InstallParams = $Program.split()[1]
+
+    Write-Output "Installing ${ProgramName}"
+    choco install $ProgramName -- params="${InstallParams}" -y
+  }
+}
+
+
+# Get the flag passed in to the script.
+$Flag = $args[0]
+
+switch ($Flag) {
+  "--all" {
+    Install-Wsl
+    Install-Packages
+    Break
+  }
+  "--wsl" {
+    Install-Wsl
+    Break
+  }
+  "--packages" {
+    Install-Packages
+    Break
+  }
+  "--vs-code" {
+    Break
+  }
+  "--help" {
+    Show-Help
+    Break
+  }
+  default {
+    Show-Help
   }
 }
