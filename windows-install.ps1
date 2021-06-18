@@ -21,14 +21,17 @@ function Install-Packages {
   }
 
   $ProgramsToInstall = @(
+    'discord',
+    'docker-desktop',
+    'dropbox',
+    'firefox /l:en-US',
     'git /NoGuiHereIntegration',
     'googlechrome',
-    'firefox /l:en-US',
-    'vscode',
-    'spotify',
     'nodejs-lts',
+    'pgadmin4',
+    'spotify',
     'steam-client',
-    'pgadmin4'
+    'vscode'
   )
 
   foreach ($Program in $ProgramsToInstall) {
@@ -36,10 +39,15 @@ function Install-Packages {
     $InstallParams = $Program.split()[1]
 
     Write-Output "Installing ${ProgramName}"
-    choco install $ProgramName -- params="${InstallParams}" -y
+    choco install $ProgramName --params="${InstallParams}" -y
   }
 }
 
+function Add-Vscode-Config {
+  $DestinationDir = "$env:APPDATA\Code\User"
+  Copy-Item -Path "${PSScriptRoot}\vs-code\.config\Code\User\keybindings.json" -Destination "${DestinationDir}\keybindings.json"
+  Copy-Item -Path "${PSScriptRoot}\vs-code\.config\Code\User\settings.json" -Destination "${DestinationDir}\settings.json"
+}
 
 # Get the flag passed in to the script.
 $Flag = $args[0]
@@ -48,6 +56,7 @@ switch ($Flag) {
   "--all" {
     Install-Wsl
     Install-Packages
+    Add-Vscode-Config
     Break
   }
   "--wsl" {
@@ -59,6 +68,7 @@ switch ($Flag) {
     Break
   }
   "--vs-code" {
+    Add-Vscode-Config
     Break
   }
   "--help" {
