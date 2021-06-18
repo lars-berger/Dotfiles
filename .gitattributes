@@ -1,0 +1,6 @@
+# Set LF as the line ending to use for all files that Git interprets as text files.
+* text=auto eol=lf
+
+# Make sure that Windows shell scripts retain CRLF line endings.
+*.{cmd,[cC][mM][dD]} text eol=crlf
+*.{bat,[bB][aA][tT]} text eol=crlf
