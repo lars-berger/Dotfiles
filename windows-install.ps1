@@ -3,7 +3,8 @@
 function Show-Help {
   Write-Output 'Possible flags:'
   Write-Output '--all (installs all packages and configs)'
-  Write-Output '--wsl (installs WSL)'
+  Write-Output '--wsl (installs WSL and configs)'
+  Write-Output '--wsl-configs (installs WSL configs)'
   Write-Output '--packages (installs all packages)'
   Write-Output '--vs-code (installs vs-code related configs)'
 }
@@ -111,6 +112,10 @@ switch ($Flag) {
   "--wsl" {
     Install-Wsl
     Install-Wsl-Ubuntu-Packages
+    Add-Wsl-Configs
+    Break
+  }
+  "--wsl-configs" {
     Add-Wsl-Configs
     Break
   }
