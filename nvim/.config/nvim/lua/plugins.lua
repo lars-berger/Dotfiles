@@ -38,6 +38,9 @@ return require("packer").startup(function(use)
     use {"kabouzeid/nvim-lspinstall", opt = true}
     use {"folke/trouble.nvim", opt = true}
 
+    -- Surround
+    use "tpope/vim-surround"
+
     -- Telescope
     use {"nvim-lua/popup.nvim", opt = true}
     use {"nvim-lua/plenary.nvim", opt = true}
