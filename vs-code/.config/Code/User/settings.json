@@ -11,6 +11,9 @@
   "diffEditor.renderSideBySide": true,
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "window.zoomLevel": 2,
+  "editor.scrollBeyondLastLine": false,
+  "editor.cursorBlinking": "solid",
+  "editor.occurrencesHighlight": false,
 
   // Code formatting and linting settings.
   "editor.tabSize": 2,
@@ -53,7 +56,7 @@
   // VSCode Neovim extension settings.
   "vscode-neovim.useWSL": true,
   "vscode-neovim.neovimExecutablePaths.linux": "/usr/bin/nvim",
-  "vscode-neovim.neovimInitVimPaths.linux": "$HOME/.config/nvim/vimscript/nv-vscode/init.vim",
+  "vscode-neovim.neovimInitVimPaths.linux": "$HOME/.config/nvim/vimscript/lv-vscode/init.vim",
   "vscode-neovim.neovimExecutablePaths.win32": "C:\\tools\\neovim\\Neovim\\bin\\nvim.exe",
 
   // Gitlens extension settings.
@@ -74,5 +77,11 @@
   "editor.renderControlCharacters": false,
 
   // Appearance settings.
-  "workbench.colorTheme": "One Monokai"
+  "workbench.colorTheme": "One Monokai",
+  "workbench.colorCustomizations": {
+    "[One Monokai]": {
+      "editor.lineHighlightBackground": "#313641",
+      "editor.selectionBackground": "#464d5c"
+    }
+  }
 }
