@@ -41,6 +41,9 @@ return require("packer").startup(function(use)
     -- Surround
     use "tpope/vim-surround"
 
+    -- Multi cursors
+    use "mg979/vim-visual-multi"
+
     -- Telescope
     use {"nvim-lua/popup.nvim", opt = true}
     use {"nvim-lua/plenary.nvim", opt = true}

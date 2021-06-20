@@ -81,6 +81,7 @@ function Install-Wsl-Ubuntu-Packages {
   wsl sudo npm i -g neovim
 
   # Symlink win32yank so that it can be found by Neovim on WSL.
+  # Described further here: https://github.com/neovim/neovim/wiki/FAQ#how-to-use-the-windows-clipboard-from-wsl
   wsl sudo ln -s "/mnt/c/tools/neovim/Neovim/win32yank.exe" "/usr/local/bin/win32yank.exe"
 }
 
