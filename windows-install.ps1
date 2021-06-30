@@ -27,6 +27,7 @@ function Install-Packages {
 
   $ProgramsToInstall = @(
     'autohotkey',
+    'awscli',
     'discord',
     'docker-desktop',
     'dropbox',
@@ -36,6 +37,7 @@ function Install-Packages {
     # neovim --pre should probably be used instead until 0.5 goes out of beta.
     'neovim',
     'nodejs-lts',
+    'paint.net',
     'pgadmin4',
     'spotify',
     'steam-client',
