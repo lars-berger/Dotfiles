@@ -46,9 +46,23 @@
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "[csharp]": {
+    "editor.defaultFormatter": "ms-dotnettools.csharp"
+  },
   "[bat]": {
     "files.eol": "\r\n"
   },
+  "[xaml]": {
+    "editor.defaultFormatter": "DotJoshJohnson.xml"
+  },
+  "redhat.telemetry.enabled": false,
+  "xml.format.closingBracketNewLine": false,
+  "xml.format.emptyElements": "collapse",
+  "xml.format.splitAttributesIndentSize": 1,
+  "xml.format.splitAttributes": true,
+
+  // Omnisharp extension settings.
+  "omnisharp.enableImportCompletion": true,
 
   // VSCodeVim extension settings (no longer used).
   "vim.useSystemClipboard": true,
@@ -1049,5 +1063,8 @@
       "type": "command",
       "command": "workbench.action.toggleZenMode"
     }
-  ]
+  ],
+  "workbench.editor.untitled.hint": "hidden",
+  "diffEditor.ignoreTrimWhitespace": false,
+  "editor.formatOnType": true
 }
