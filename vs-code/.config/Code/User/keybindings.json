@@ -43,6 +43,16 @@
     "when": "editorTextFocus && neovim.mode != insert",
     "args": "<S-right>"
   },
+  
+  // Quickly switch between tabs.
+  {
+    "key": "tab",
+    "command": "workbench.action.nextEditor"
+  },
+  {
+    "key": "shift+tab",
+    "command": "workbench.action.previousEditor"
+  }
 
   // Keybindings from LunarVim.
   {
