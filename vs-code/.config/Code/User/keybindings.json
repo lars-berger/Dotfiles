@@ -52,7 +52,7 @@
   {
     "key": "shift+tab",
     "command": "workbench.action.previousEditor"
-  }
+  },
 
   // Keybindings from LunarVim.
   {
